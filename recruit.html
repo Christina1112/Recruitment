@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			html,
+			body {
+				width: 100%;
+				height: 100%;
+				margin: 0;
+			}
+			
+			body {
+				-background: url(img/zpbg.png) no-repeat center center;
+				background-size: cover;
+				display: flex;
+			}
+			
+			ul,
+			li {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			
+			p {
+				margin: 0;
+			}
+			
+			a {
+				text-decoration: none;
+				color: #b6bdcf;
+			}
+			
+			#content {
+				width: 700px;
+				height: 460px;
+				border-radius: 10px;
+				border: 1px solid #30343f;
+				margin: auto;
+				-background: url(img/logo.png) no-repeat 25px 25px #252934;
+				box-sizing: border-box;
+				padding: 84px 0px 0px 25px;
+			}
+			
+			#leftList {
+				float: left;
+				width: 60px;
+				padding-right: 12px;
+				height: 100%;
+				background: url(img/leftListBg.png) no-repeat right top;
+			}
+			
+			#leftList li {
+				text-align: right;
+				height: 68px;
+				padding-top: 12px;
+				color: #6a7686;
+				font: 10px/18px "微软雅黑";
+			}
+			
+			#leftList li span {
+				font-size: 12px;
+				display: block;
+				cursor: pointer;
+			}
+			
+			#leftList .active span {
+				color: #ff2c4f;
+			}
+			
+			#right {
+				width: 600px;
+				height: 100%;
+				float: left;
+			}
+			
+			#rightList li {
+				height: 82px;
+				width: 100%;
+				box-sizing: border-box;
+				padding: 20px 25px 20px 30px;
+				position: relative;
+				cursor: pointer;
+			}
+			
+			#rightList li:hover {
+				background-color: #1e212a;
+			}
+			
+			#rightList li:hover .num {
+				color: #ff2c4f;
+			}
+			
+			#rightList li:hover:before {
+				content: "";
+				width: 2px;
+				height: 54px;
+				position: absolute;
+				background-color: #ff2c4f;
+				left: -3px;
+				top: 10px;
+			}
+			
+			#rightList li:after {
+				content: "";
+				width: 543px;
+				height: 1px;
+				position: absolute;
+				bottom: 0px;
+				right: 25px;
+				background: url(img/lineBg.png) repeat-x;
+			}
+			
+			#rightList .num {
+				font-size: 30px;
+				font-family: arial;
+				color: #6a7686;
+				float: left;
+				width: 36px;
+				height: 40px;
+				border-right: 1px solid #303642;
+			}
+			
+			#rightList .list {
+				float: left;
+				width: 500px;
+				margin-left: 6px;
+				font-size: 14px;
+				color: #b6bdcf;
+				font-family: "微软雅黑";
+			}
+			
+			#rightList .list span {
+				float: left;
+			}
+			
+			.list>a:nth-of-type(1) {
+				height: 26px;
+				float: none;
+				font-size: 14px;
+			}
+			
+			.job {
+				margin-right: 15px;
+			}
+			
+			#rightList .list time {
+				float: right;
+				color: #606a7a;
+			}
+			
+			.list .text {
+				float: left;
+				width: 430px;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+			
+			.list a {
+				float: right;
+				font-size: 12px;
+			}
+			
+			nav {
+				font-size: 0px;
+				text-align: center;
+			}
+			
+			nav a {
+				font: 12px/46px "微软雅黑";
+				display: inline-block;
+				vertical-align: middle;
+				width: 24px;
+			}
+			
+			nav a.active {
+				color: #eb2a4b;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="content">
+			<ul id="leftList">
+				<!-- <li><span>社会招聘</span>society</li>
+				<li class="active"><span>校园招聘</span>campus</li> -->
+			</ul>
+			<div id="right">
+				<ul id="rightList">
+					<!-- <li>
+						<span class="num">01</span>
+						<div class="list">
+							<a href=""><span class="job">职位需求：前端开发工程师</span><span>需求人数：2名</span><time>2014-04-10</time></a>
+							<p><span class="text">岗位要求：布拉布拉布拉一大段话布拉布拉布拉一大段话布拉布拉布拉一大段话</span><a href="javascript:;">查看详情>></a></p>
+						</div>
+					</li> -->
+				</ul>
+				<nav id="nav">
+					<span id="pagesBox">
+						<!-- <a class="active" href="javascript:;">1</a>
+						<a href="javascript:;">2</a>
+						<a href="javascript:;">3</a>
+						<a href="javascript:;">4</a> -->
+					</span>
+				</nav>
+			</div>
+		</div>
+		<script src="js/data.js"></script>
+		<script>
+			/*此案例布局包含两部分，竖线左边和竖线右边，右边再次分为两部分，上面内容和下面的页码部分
+						js编写部分也分为两部分，左边和右边，右边再次分为上面信息内容和下面的页码编写部分
+						首先我们先来编写右边上半部分的招聘内容部分，首先进入页面我们会看到每个页面都有开发者想要呈献给使用者的默认页面，
+						这样通常左边的招聘类型默认第一项为默认项，默认字体颜色为红色，右面默认页面为社会招聘的第一页信息，
+						页码则默认为第一页，字体颜色默认为红色*/
+			//首先我们来渲染一下右面的招聘信息部分，我们默认右面渲染社会招聘信息的第一页
+			//渲染右面的细信息需要通过hash值进行相应的定位，首先我们需要hash值
+			var hash = window.location.hash;
+			//hash值有三种情况，有值，空值和没有值
+			var num = 0; //下标初始值为0，hash值与页码相匹配
+			//var hashNum=num+1;//hash值为下标加一，hash值即页码数
+			if(hash) { //有hash值，有值和空值
+				if(hash.slice(1)) {
+					num = hash.slice(1) - 1;
+				} else if(num + 1 > pageNum) {
+					num = 0;
+					window.location.hash = num + 1; //网址中的值也要显示出来
+				}
+
+			}
+
+			var search = window.location.search; //社火招聘需要search来定位它的默认值，默认值为“world”
+			var searchVal = "world";
+
+			if(search) { //有值
+				if(search.slice(1)) {
+					searchVal = search.slice(1);
+				} else {
+					searchVal = "world";
+				}
+			}
+
+			if(!data[searchVal]) { //没有值
+				searchVal = "world";
+				window.location.search = searchVal; //网址中也需要显示出来
+				console.log(data)
+			}
+
+			//社会信息部分需要search值
+			var datas = data[searchVal]
+			var rightList = document.getElementById("rightList");
+
+			function rightHtml(index) { //通过下标来记录每一页的信息内容，第一条信息的下标为0
+				var start = index * 4; //每页下标从0开始
+				var end = start + 4; //每页有4条信息
+				var rightHtml = datas.slice(start, end).map(function(item) { //每一页slice截取从start开始，到end但不包含end结束
+					return `<li>
+						<span class="num">${item.num}</span>
+						<div class="list">
+							<a href=""><span class="job">${item.job}</span><span>${item.pNum}</span><time>${item.data}</time></a>
+							<p><span class="text">${item.ask}</span><a href="javascript:;">查看详情>></a></p>
+						</div>
+					</li>`
+				}).join("")
+				rightList.innerHTML = rightHtml;
+			}
+			;rightHtml(num)
+
+			//右边信息内容生成结束
+			var pagesBox = document.getElementById('pagesBox');
+			console.log(pagesBox)
+			//渲染生成右面页码结构，生成几页
+
+			var pageNums = Math.ceil(datas.length / 4) //向上取整求的页码数
+			console.log(pageNums);
+			var pageHtml = '';
+			for(var i = 0; i < pageNums; i++) {//pageNums通过前面的式子已经得出了，无需再求其长度
+				pageHtml += `<a class="${i===num?"active":''}" href="javascript:;">${i+1}</a>`;
+				console.log(pageHtml)
+				//console.log(i+'a')
+			}
+			pagesBox.innerHTML = pageHtml;
+			var pageA =pagesBox.children;
+			var prevIndex = num;
+			for(var i = 0; i < pageA.length; i++) {
+				pageA[i].index = i;
+				pageA[i].onclick = function(){
+					rightHtml(this.index);
+					pageA[prevIndex].className = '';
+					this.className = "active";
+					prevIndex = this.index;
+					window.location.hash = this.index+1;
+					
+				}
+			}
+			//渲染左边的招聘数据
+			var leftList = document.getElementById('leftList');
+			var leftHtml = data.list.map(function(item){//单词拼写错误造成招聘类型先是未定义
+				return `<li data-zhaopin = "${item.tip}"><span>${item.text}</span>${item.eng}</li>`
+				
+			}).join('');
+			leftList.innerHTML = leftHtml;
+			
+			//给默认项添加样式
+			var leftLi = leftList.children;//找到每一个li,遍历数组找到初始默认的招聘类型'world'
+			
+			for(var i=0;i<leftLi.length;i++){
+				if(leftLi[i].dataset.zhaopin ===searchVal){
+					leftLi[i].className = "active";
+				}
+				
+				
+			}
+			//遍历数组给每一个招聘类型添加样式
+			var prevLiIndex = 0;
+			for(var i=0;i<leftLi.length;i++){
+				leftLi[i].index = i;
+				leftLi[i].onclick = function(){
+					rightHtml(this.index);
+					leftLi[prevLiIndex].className = "";
+					this.className = "active";
+					window.location.search = this.dataset.zhaopin;
+				}
+			}
+			
+		</script>
+	</body>
+
+</html>
